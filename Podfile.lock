@@ -1,0 +1,13 @@
+PODS:
+  - KeychainSwift (2.0.3)
+  - XLForm (3.0.1)
+
+DEPENDENCIES:
+  - KeychainSwift (~> 2.0)
+  - XLForm (~> 3.0.0)
+
+SPEC CHECKSUMS:
+  KeychainSwift: 10da060dd536c16b25ee8998fb374b26c5ab1c33
+  XLForm: 1a20da41c009e4f99e802e886a8eef5f2b086644
+
+COCOAPODS: 0.38.2
