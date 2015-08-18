@@ -15,13 +15,15 @@ class MenuController: UITableViewController {
         super.viewDidLoad()
         let openid=KeychainSwift.get("openid")
         
-        println(openid)
+       // println(openid)
         
-        if openid==nil{
-            let vc=storyboard!.instantiateViewControllerWithIdentifier("LoginController") as! UIViewController
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
-        
+      //  KeychainSwift.delete("openid")
+//        
+//        if openid==nil{
+//            let vc=storyboard!.instantiateViewControllerWithIdentifier("LoginController") as! UIViewController
+//            self.presentViewController(vc, animated: true, completion: nil)
+//        }
+//        
         
     }
 

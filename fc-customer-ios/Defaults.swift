@@ -8,10 +8,18 @@
 
 import UIKit
 
+
 class Defaults {
-    class var userId: Int? {
-        get { return NSUserDefaults.standardUserDefaults().valueForKey("userId") as? Int }
-        set (value) { NSUserDefaults.standardUserDefaults().setValue(value, forKey: "userId") }
+    class var counselor: Counselor? {
+        get {
+            let nsdata=NSUserDefaults.standardUserDefaults().objectForKey("counselor") as! NSData
+            return NSKeyedUnarchiver.unarchiveObjectWithData(nsdata) as? Counselor
+        }
+        set (value) {
+            let nsdata = NSKeyedArchiver.archivedDataWithRootObject(value!)
+            NSUserDefaults.standardUserDefaults().setObject(nsdata, forKey: "counselor")
+        }
     }
 }
+
 

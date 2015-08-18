@@ -7,20 +7,12 @@
 //
 
 import UIKit
-import KeychainSwift
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
 class LoginController: UIViewController {
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBOutlet weak var openIdTextLable: UITextField!
     
@@ -28,28 +20,48 @@ class LoginController: UIViewController {
     
     @IBAction func doLogin(sender: UIButton) {
         var openid=openIdTextLable.text
-        var stroryboard = self.storyboard
-        if(isRegister(openid)){
-            
-             KeychainSwift.set(openid, forKey: "openid")
-            
-            let vc=stroryboard!.instantiateViewControllerWithIdentifier("NaviController") as! UIViewController
-          //  self.navigationController?.pushViewController(vc, animated: true);
-            self.presentViewController(vc, animated: true, completion: nil)
-  
-        }else{
-            warnTextLable.hidden=false;
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("update"), userInfo: nil, repeats: false)
+        
+        let progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        Alamofire.request(.POST, Router("isregister"),parameters:["openid":openid])
+            .responseJSON { _, _, ret,error in
+                if(error != nil){
+                    progressHUD.labelText = "网络错误"
+                    progressHUD.mode = .Text
+                    progressHUD.hide(true, afterDelay: 2)
+                    return;
+                }
+                
+                var json = JSON(ret!)
+                var result = json["result"].bool!
+                if result {
+                    self.storeOpenidAndCounselor(openid,json:json["data"])
+                    progressHUD.hide(true)
+                    
+                    let vc=self.storyboard!.instantiateViewControllerWithIdentifier("NaviController") as! UIViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }else{
+                    progressHUD.hide(true)
+                    var message=json["message"].string!
+                    self.warnTextLable.text=message
+                    self.warnTextLable.hidden=false
+                    NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("update"), userInfo: nil, repeats: false)
+                }
         }
+        
     }
+    
+    func storeOpenidAndCounselor(openid:String,json:JSON) {
+        Keychain.openid=openid
+        Defaults.counselor = Counselor(id: json["id"].int!, name:json["name"].string!, role: json["role"].string!)
+    }
+    
     
     func update(){
-         warnTextLable.hidden=true;
+        self.warnTextLable.text = ""
+        self.warnTextLable.hidden = true
     }
     
-    func isRegister(openid:String)->Bool{
-        return openid == "a1";
-    }
-    
+
     
 }
