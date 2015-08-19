@@ -11,27 +11,15 @@ import KeychainSwift
 
 class MenuController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let openid=KeychainSwift.get("openid")
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let sugue=segue.identifier;
         
-       // println(openid)
-        
-      //  KeychainSwift.delete("openid")
-//        
-//        if openid==nil{
-//            let vc=storyboard!.instantiateViewControllerWithIdentifier("LoginController") as! UIViewController
-//            self.presentViewController(vc, animated: true, completion: nil)
-//        }
-//        
-        
-    }
+        if(sugue=="purpose" || sugue=="sign" || sugue=="public"){
+            if let vc=segue.destinationViewController as? ListCustomerController{
+                vc.state=sugue
+            }
+        }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
 
 }

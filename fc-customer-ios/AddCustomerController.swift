@@ -137,16 +137,31 @@ class AddCustomerController : XLFormViewController {
     func initSelectAlertView(){
         let helper=UIHelper(formView:self)
         
-        helper.startLoad(4,progressHUD:self.progressHUD)
-        
-        helper.netLoadSelect(Tags.CounselorId.rawValue,module:"counselor"){
-            (index,json:JSON,defaultIndex) in
-            let id=json["id"].intValue
-            if(id == Defaults.counselor!.id){
-                defaultIndex=index.toInt()!
+        let counselor=Defaults.counselor
+        /*
+        如果是经理，加载所有可以选择的顾问
+        如果是顾问，则只能选择自己
+        */
+        if counselor!.isManager() {
+            helper.startLoad(4,progressHUD:self.progressHUD)
+            
+            helper.netLoadSelect(Tags.CounselorId.rawValue,module:"counselor"){
+                (index,json:JSON,defaultIndex) in
+                let id=json["id"].intValue
+                if(id == Defaults.counselor!.id){
+                    defaultIndex=index.toInt()!
+                }
+                return (json["id"].intValue,json["name"].stringValue)
             }
-            return (json["id"].intValue,json["name"].stringValue)
+        }else{
+            let selectOption=SelectOption(value: counselor!.id, text: counselor!.name)
+            self.form.formRowWithTag(Tags.CounselorId.rawValue)?.selectorOptions=[selectOption]
+            self.form.formRowWithTag(Tags.CounselorId.rawValue)?.value=selectOption
+            
+            helper.startLoad(3,progressHUD:self.progressHUD)
         }
+        
+
         
         helper.netLoadSelect(Tags.State.rawValue,module:"customer/states"){
             (_,json,_) in
