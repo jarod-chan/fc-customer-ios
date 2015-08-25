@@ -82,7 +82,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="SF1-U2-7Eb" kind="push" id="gSe-ir-b3k"/>
+                                            <segue destination="SF1-U2-7Eb" kind="push" identifier="addOrEditCustomer" id="gSe-ir-b3k"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -180,10 +180,10 @@
             </objects>
             <point key="canvasLocation" x="1684" y="392"/>
         </scene>
-        <!--新增客户-->
+        <!--客户-->
         <scene sceneID="zqU-bQ-bom">
             <objects>
-                <viewController id="SF1-U2-7Eb" customClass="AddCustomerController" customModule="fc_customer_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="客户" id="SF1-U2-7Eb" customClass="AddOrEditCustomerController" customModule="fc_customer_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0fF-XP-0EF"/>
                         <viewControllerLayoutGuide type="bottom" id="gah-y6-SO5"/>
@@ -193,11 +193,111 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="新增客户" id="bj2-N0-W0e"/>
+                    <navigationItem key="navigationItem" id="bj2-N0-W0e"/>
+                    <connections>
+                        <segue destination="drh-Vt-cxp" kind="push" identifier="purposeroomController" id="oaa-bK-8UH"/>
+                        <segue destination="chm-GA-bAt" kind="push" identifier="purposeController" id="8GV-tv-d7t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="934-93-e4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2127" y="392"/>
+        </scene>
+        <!--意向信息-->
+        <scene sceneID="1Dp-uU-BFX">
+            <objects>
+                <viewController title="意向信息" id="chm-GA-bAt" customClass="PurposeController" customModule="fc_customer_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qMu-bM-IBi"/>
+                        <viewControllerLayoutGuide type="bottom" id="wn4-Wx-dNC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TFf-97-x81">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="kB7-UN-k0F">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="purposeId" id="Lgx-5E-cbU">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lgx-5E-cbU" id="i3d-yo-VMr">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzD-E7-5fi">
+                                                    <rect key="frame" x="8" y="11" width="129" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <connections>
+                                            <segue destination="gcu-m9-tOZ" kind="push" identifier="editPurpose" id="VVp-bL-bpt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="purposeContent" id="chh-YP-8oL">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="chh-YP-8oL" id="rM2-MJ-Zhn">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTd-Kj-xWr">
+                                                    <rect key="frame" x="8" y="11" width="155" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaB-zH-Xxx">
+                                                    <rect key="frame" x="171" y="14" width="132" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="chm-GA-bAt" id="aBI-Wj-Vj9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="意向信息" id="LVu-UC-f3P">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="F5B-hD-o2g">
+                            <connections>
+                                <segue destination="gcu-m9-tOZ" kind="push" identifier="addPurpose" id="GNX-bX-Gnb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="kB7-UN-k0F" id="8Jq-p2-wfC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m3G-IQ-o4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2573" y="392"/>
+        </scene>
+        <!--意向信息-编辑-->
+        <scene sceneID="osM-ly-m0X">
+            <objects>
+                <viewController title="意向信息-编辑" id="gcu-m9-tOZ" customClass="AddOrEditPurposeController" customModule="fc_customer_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j58-AR-jDx"/>
+                        <viewControllerLayoutGuide type="bottom" id="ofh-Vp-kCi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2AJ-qU-0s1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6RB-Re-FNm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aqa-eQ-Ecx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2999" y="392"/>
         </scene>
         <!--客户列表-->
         <scene sceneID="GTs-wx-0yw">
@@ -234,6 +334,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="SF1-U2-7Eb" kind="push" identifier="editCustomer" id="cNz-md-8Cs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -251,6 +354,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2V-BE-L8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2127" y="1070"/>
+        </scene>
+        <!--意向房源-->
+        <scene sceneID="cmb-to-Wo3">
+            <objects>
+                <viewController title="意向房源" id="drh-Vt-cxp" customClass="PurposeroomController" customModule="fc_customer_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="910-xA-a3C"/>
+                        <viewControllerLayoutGuide type="bottom" id="CUx-u1-hqg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="68J-6c-a72">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="意向房源" id="hwJ-AK-sUa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSl-zr-e5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2573" y="1070"/>
         </scene>
         <!--Navi Controller-->
         <scene sceneID="zds-G5-6oB">
@@ -278,5 +400,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="XlP-Cy-gcY"/>
+        <segue reference="cNz-md-8Cs"/>
+        <segue reference="GNX-bX-Gnb"/>
     </inferredMetricsTieBreakers>
 </document>

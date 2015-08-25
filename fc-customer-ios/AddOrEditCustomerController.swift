@@ -3,11 +3,13 @@ import Alamofire
 import SwiftyJSON
 import MBProgressHUD
 
-class AddCustomerController : XLFormViewController {
+class AddOrEditCustomerController : XLFormViewController {
     
     private var menuSection:XLFormSectionDescriptor!
     
     private var progressHUD:MBProgressHUD!
+    
+    var customer:JSON!
     
     
     private enum Tags : String {
@@ -47,7 +49,7 @@ class AddCustomerController : XLFormViewController {
         var section : XLFormSectionDescriptor
         var row : XLFormRowDescriptor
         
-        form = XLFormDescriptor(title: "新增客户")
+        form = XLFormDescriptor(title: "")
         form.assignFirstResponderOnShow = false
         
         section = XLFormSectionDescriptor.formSectionWithTitle("客户信息")
@@ -103,7 +105,6 @@ class AddCustomerController : XLFormViewController {
         section.addFormRow(row)
         
         row = XLFormRowDescriptor(tag:"counselor_name",rowType:XLFormRowDescriptorTypeInfo, title:"登记人")
-        row.value=Defaults.counselor!.name
         row.hidden = "$showMore==0"
         section.addFormRow(row)
         
@@ -113,11 +114,11 @@ class AddCustomerController : XLFormViewController {
         form.addFormSection(section)
         
         row = XLFormRowDescriptor(tag:nil, rowType: XLFormRowDescriptorTypeButton, title: "意向信息")
-        row.action.formSegueIdenfifier = "NativeEventNavigationViewControllerSegue"
+        row.action.formSegueIdenfifier = "purposeController"
         section.addFormRow(row)
         
         row = XLFormRowDescriptor(tag:nil, rowType: XLFormRowDescriptorTypeButton, title: "意向房源")
-        row.action.formSegueIdenfifier = "NativeEventNavigationViewControllerSegue"
+        row.action.formSegueIdenfifier = "purposeroomController"
         section.addFormRow(row)
         
         row = XLFormRowDescriptor(tag:nil, rowType: XLFormRowDescriptorTypeButton, title: "跟进记录")
@@ -137,54 +138,127 @@ class AddCustomerController : XLFormViewController {
     func initSelectAlertView(){
         let helper=UIHelper(formView:self)
         
-        let counselor=Defaults.counselor
-        /*
-        如果是经理，加载所有可以选择的顾问
-        如果是顾问，则只能选择自己
-        */
-        if counselor!.isManager() {
-            helper.startLoad(4,progressHUD:self.progressHUD)
-            
-            helper.netLoadSelect(Tags.CounselorId.rawValue,module:"counselor"){
-                (index,json:JSON,defaultIndex) in
-                let id=json["id"].intValue
-                if(id == Defaults.counselor!.id){
-                    defaultIndex=index.toInt()!
-                }
-                return (json["id"].intValue,json["name"].stringValue)
-            }
-        }else{
-            let selectOption=SelectOption(value: counselor!.id, text: counselor!.name)
-            self.form.formRowWithTag(Tags.CounselorId.rawValue)?.selectorOptions=[selectOption]
-            self.form.formRowWithTag(Tags.CounselorId.rawValue)?.value=selectOption
-            
-            helper.startLoad(3,progressHUD:self.progressHUD)
+        helper.start={
+            self.progressHUD.mode = .Indeterminate
+            self.progressHUD.show(true)
         }
         
-
+        helper.finish={
+            isError in
+            if(isError){
+                self.progressHUD.labelText = "网络错误"
+                self.progressHUD.mode = .Text
+                self.progressHUD.hide(true, afterDelay: 2)
+            }else{
+                self.initData()
+                self.progressHUD.hide(true)
+            }
+        }
+        
+        
+        helper.run(5)
+        
+        
+        helper.netLoadSelect(Tags.CounselorId.rawValue,module:"counselor"){
+            _,json in
+            return (json["id"].intValue,json["name"].stringValue)
+        }
         
         helper.netLoadSelect(Tags.State.rawValue,module:"customer/states"){
-            (_,json,_) in
+            _,json in
             return (json["key"].stringValue,json["name"].stringValue)
         }
         
         helper.netLoadSelect(Tags.From.rawValue,module:"syenum",parameters:["type_key":"customer_from"]){
-            (_,json,_) in
+            _,json in
             return (json["key"].stringValue,json["name"].stringValue)
         }
         
         helper.netLoadSelect(Tags.Way.rawValue,module:"syenum",parameters:["type_key":"customer_way"]){
-            (_,json,_) in
+            _,json in
             return (json["key"].stringValue,json["name"].stringValue)
+        }
+        
+        var counselor_id=customer["counselor_id"].intValue
+        helper.netLoadText("counselor_name",module:"counselor/\(counselor_id)"){
+            row,json in
+            row.value=json["name"].stringValue
         }
         
         
     }
     
+    func initData(){
+        let util=FormUtil(formView:self)
+        let stringSetVal:(String,XLFormRowDescriptor)->AnyObject?={tag,_ in return self.customer[tag].stringValue}
+        
+        util.setValue(Tags.Name.rawValue,translate:stringSetVal)
+        util.setValue(Tags.Remark.rawValue,translate:stringSetVal)
+        util.setValue(Tags.Phone.rawValue,translate:stringSetVal)
+        
+        let intSelect:(String,XLFormRowDescriptor)->AnyObject?={
+            tag,row in
+            if let selectOptions=row.selectorOptions as? [SelectOption]{
+                var first=selectOptions[0]
+                for option in selectOptions{
+                    if option.value as! Int == self.customer[tag].intValue{
+                        return option;
+                    }
+                }
+                return first;
+            }
+            return nil
+        }
+        
+        let stringSelect:(String,XLFormRowDescriptor)->AnyObject?={
+            tag,row in
+            if let selectOptions=row.selectorOptions as? [SelectOption]{
+                var first=selectOptions[0]
+                for option in selectOptions{
+                    if option.value as! String == self.customer[tag].stringValue{
+                        return option;
+                    }
+                }
+                return first;
+            }
+            return nil
+        }
+        
+        util.setValue(Tags.CounselorId.rawValue,translate:intSelect)
+        util.setValue(Tags.State.rawValue,translate:stringSelect)
+        
+        util.setValue(Tags.QQ.rawValue,translate:stringSetVal)
+        util.setValue(Tags.Email.rawValue,translate:stringSetVal)
+        util.setValue(Tags.Weixin.rawValue,translate:stringSetVal)
+        
+        util.setValue(Tags.Way.rawValue,translate:stringSelect)
+        util.setValue(Tags.From.rawValue,translate:stringSelect)
+        
+        if Defaults.counselor!.isSale() {
+            let row = self.form.formRowWithTag(Tags.CounselorId.rawValue)
+            if var selectOptions=row?.selectorOptions  as? [SelectOption]{
+                selectOptions = selectOptions.filter({option in
+                    let counselorId=self.customer[Tags.CounselorId.rawValue].intValue;
+                    if option.value as! Int == counselorId{
+                        return true
+                    }
+                    return false
+                })
+                row?.selectorOptions = selectOptions
+            }
+            self.reloadFormRow(row)
+        }
+        
+    }
+    
+    
+
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.resetViewController()
         self.progressHUD=MBProgressHUD(view:self.view)
         self.view.addSubview(self.progressHUD)
         initSelectAlertView()
@@ -221,9 +295,13 @@ class AddCustomerController : XLFormViewController {
         
         self.progressHUD.mode = .Indeterminate
         self.progressHUD.show(true)
-        var parameters=FormUtil(formView:self).formValues(Tags.allValues())
         
-
+        var param=[String:AnyObject]()
+        if let id=self.customer["id"].int{
+            param=["id":id]
+        }
+        var parameters=FormUtil(formView:self).formValues(Tags.allValues(),param:param)
+        
         
         Alamofire.request(.POST, Router("customer/save"), parameters: parameters,encoding:.JSON)
             .responseJSON { _, _, ret,error in
@@ -239,8 +317,13 @@ class AddCustomerController : XLFormViewController {
                 var json = JSON(ret!)
                 var result = json["result"].bool!
                 if result {
-                    println(json)
-                    self.menuSection.hidden=false;
+                    if let returnId=json["data","id"].int{
+                        //struct 结构体无法直接改变值
+                        var temp:JSON=self.customer
+                        temp["id"]=JSON(returnId)
+                        self.customer=temp
+                    }
+                    self.resetViewController()
                     self.progressHUD.labelText = "保存成功"
                     self.progressHUD.mode = .Text
                     self.progressHUD.hide(true, afterDelay: 2)
@@ -254,6 +337,27 @@ class AddCustomerController : XLFormViewController {
                 }
         }
 
+    }
+    
+    
+    func resetViewController(){
+
+        if let customer_id=self.customer["id"].int{
+            self.title = self.customer["name"].stringValue
+            self.menuSection.hidden=false
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let indentifier=segue.identifier;
+        switch indentifier! {
+        case "purposeController":
+            if let vc=segue.destinationViewController as? PurposeController{
+                vc.customerId=self.customer["id"].intValue
+            }
+        default:
+            println("segue:\(indentifier) do nothing")
+        }
     }
     
 }

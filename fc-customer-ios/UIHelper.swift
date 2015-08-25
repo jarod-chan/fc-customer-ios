@@ -17,22 +17,24 @@ class UIHelper {
     let formView:XLFormViewController
     var loadNum:Int=0
     var isLoadError:Bool=false;
-    var progressHUD:MBProgressHUD!
+
     
     init(formView:XLFormViewController){
         self.formView=formView
     }
     
-    func startLoad(n:Int,progressHUD:MBProgressHUD){
+    var start:()->Void={}
+    var finish:(Bool)->Void={(isError:Bool) in}
+    
+    
+    func run(n:Int){
         self.isLoadError=false
         self.loadNum=n
-        self.progressHUD = progressHUD
-        self.progressHUD.mode = .Indeterminate
-        self.progressHUD.show(true)
+        self.start()
     }
     
     
-    func netLoadSelect(tag:String,module:String,parameters:[String: AnyObject]? = nil,translate:(String,JSON,inout Int)->(AnyObject,String)){
+    func netLoadSelect(tag:String,module:String,parameters:[String: AnyObject]? = nil,translate:(String,JSON)->(AnyObject,String)){
     
         var formRow=formView.form.formRowWithTag(tag)!;
         Alamofire.request(.GET,Router(module),parameters:parameters)
@@ -43,13 +45,31 @@ class UIHelper {
                 }else{
                     var json = JSON(ret!)
                     var arr=[SelectOption] ()
-                    var defSelectOptionIndex = 0
                     for(index: String,subJson:JSON) in json{
-                        let (value:AnyObject,text:String)=translate(index,subJson,&defSelectOptionIndex)
+                        let (value:AnyObject,text:String)=translate(index,subJson)
                         arr.append(SelectOption(value:value, text: text))
                     }
                     formRow.selectorOptions=arr
-                    formRow.value=arr[defSelectOptionIndex]
+                    self.formView.reloadFormRow(formRow)
+                }
+                self.doFinishCall()
+                
+        }
+        
+    }
+    
+    
+    func netLoadText(tag:String,module:String,parameters:[String: AnyObject]? = nil,dealResult:(XLFormRowDescriptor,JSON)->Void){
+        
+        var formRow=formView.form.formRowWithTag(tag)!;
+        Alamofire.request(.GET,Router(module),parameters:parameters)
+            .responseJSON { _, _, ret,error in
+                
+                if(error != nil){
+                    self.isLoadError=true
+                }else{
+                    var json = JSON(ret!)
+                    dealResult(formRow,json)
                     self.formView.reloadFormRow(formRow)
                 }
                 self.doFinishCall()
@@ -61,12 +81,7 @@ class UIHelper {
     private func doFinishCall(){
         self.loadNum--
         if(self.loadNum==0){
-            if(self.isLoadError){
-                self.progressHUD!.labelText = "网络错误"
-                self.progressHUD!.mode = .Text
-            }else{
-                self.progressHUD!.hide(true)
-            }
+            self.finish(isLoadError)
         }
     }
     

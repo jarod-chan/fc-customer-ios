@@ -8,6 +8,7 @@
 
 import UIKit
 import KeychainSwift
+import SwiftyJSON
 
 class MenuController: UITableViewController {
 
@@ -19,7 +20,17 @@ class MenuController: UITableViewController {
                 vc.state=sugue
             }
         }
+        if(sugue=="addOrEditCustomer"){
+            if let vc=segue.destinationViewController as? AddOrEditCustomerController{
+                vc.customer=createCustomer()
+            }
 
+        }
+    }
+    
+    func createCustomer()->JSON{
+        var json: JSON =  ["id":NSNull(), "counselor_id":Defaults.counselor!.id]
+        return json
     }
 
 }

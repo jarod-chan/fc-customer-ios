@@ -20,27 +20,39 @@ class ListCustomerController:UIViewController,UITableViewDataSource{
     var progressHUD:MBProgressHUD!
     var customerList=[JSON]()
     
+    let stateName=["purpose":"意向客户","sign":"签约客户","public":"公共客户"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.loadDate()
+    }
+    
+    func loadDate(){
         self.progressHUD=MBProgressHUD(view:self.view)
         self.view.addSubview(self.progressHUD)
         
         self.progressHUD.mode = .Indeterminate
         self.progressHUD.show(true)
         
+        self.title=stateName[state]
         
-        Alamofire.request(.GET,Router("customer/list/\(state)"),parameters:["app_counselor_id":Defaults.counselor!.id])
+        
+        Alamofire.request(.GET,Router("customer/list/\(state)"),parameters:[app_counselor_id : Defaults.counselor!.id])
             .responseJSON { _, _, ret,error in
-                
+                self.customerList.removeAll(keepCapacity: true)
                 let json=JSON(ret!);
                 for(index:String,subJson:JSON) in json{
                     self.customerList.append(subJson)
                 }
                 self.tableView.reloadData();
                 self.progressHUD.hide(true)
-            
+                
         }
     }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return customerList.count;
@@ -68,6 +80,15 @@ class ListCustomerController:UIViewController,UITableViewDataSource{
     
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc=segue.destinationViewController as? AddOrEditCustomerController{
+            var indexPath=self.tableView.indexPathForSelectedRow()
+            if let index=indexPath?.row {
+                vc.customer=self.customerList[index]
+            }
+        }
     }
 
 }

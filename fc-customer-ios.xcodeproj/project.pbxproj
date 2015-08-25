@@ -15,11 +15,15 @@
 		E02DFBB51B7DB93F0028EDCE /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02DFBB41B7DB93F0028EDCE /* UIHelper.swift */; };
 		E02DFBB71B7DDA470028EDCE /* SelectOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02DFBB61B7DDA470028EDCE /* SelectOption.swift */; };
 		E06330F81B84703D00F1C211 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06330F71B84703D00F1C211 /* StringExtension.swift */; };
+		E06330FA1B85677100F1C211 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06330F91B85677100F1C211 /* Constant.swift */; };
+		E06330FC1B86D27500F1C211 /* PurposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06330FB1B86D27500F1C211 /* PurposeController.swift */; };
+		E06330FE1B86D6B500F1C211 /* PurposeroomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06330FD1B86D6B500F1C211 /* PurposeroomController.swift */; };
+		E06331021B87275C00F1C211 /* AddOrEditPurposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06331011B87275C00F1C211 /* AddOrEditPurposeController.swift */; };
 		E071323A1B7880A7009FD920 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07132391B7880A7009FD920 /* Defaults.swift */; };
 		E071323E1B788BBD009FD920 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E071323D1B788BBD009FD920 /* LoginController.swift */; };
 		E07132401B7890C5009FD920 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E071323F1B7890C5009FD920 /* MenuController.swift */; };
 		E07132421B78A230009FD920 /* NaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07132411B78A230009FD920 /* NaviController.swift */; };
-		E07132441B7992D4009FD920 /* AddCustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07132431B7992D4009FD920 /* AddCustomerController.swift */; };
+		E07132441B7992D4009FD920 /* AddOrEditCustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07132431B7992D4009FD920 /* AddOrEditCustomerController.swift */; };
 		E07583CE1B832C0A00492E51 /* ListCustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07583CD1B832C0A00492E51 /* ListCustomerController.swift */; };
 		E0D3950C1B75ACCE0007FC40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D3950B1B75ACCE0007FC40 /* AppDelegate.swift */; };
 		E0D395111B75ACCE0007FC40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D3950F1B75ACCE0007FC40 /* Main.storyboard */; };
@@ -48,11 +52,15 @@
 		E02DFBB41B7DB93F0028EDCE /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		E02DFBB61B7DDA470028EDCE /* SelectOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOption.swift; sourceTree = "<group>"; };
 		E06330F71B84703D00F1C211 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E06330F91B85677100F1C211 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		E06330FB1B86D27500F1C211 /* PurposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurposeController.swift; sourceTree = "<group>"; };
+		E06330FD1B86D6B500F1C211 /* PurposeroomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurposeroomController.swift; sourceTree = "<group>"; };
+		E06331011B87275C00F1C211 /* AddOrEditPurposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditPurposeController.swift; sourceTree = "<group>"; };
 		E07132391B7880A7009FD920 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		E071323D1B788BBD009FD920 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E071323F1B7890C5009FD920 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		E07132411B78A230009FD920 /* NaviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaviController.swift; sourceTree = "<group>"; };
-		E07132431B7992D4009FD920 /* AddCustomerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCustomerController.swift; sourceTree = "<group>"; };
+		E07132431B7992D4009FD920 /* AddOrEditCustomerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditCustomerController.swift; sourceTree = "<group>"; };
 		E07583CD1B832C0A00492E51 /* ListCustomerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCustomerController.swift; sourceTree = "<group>"; };
 		E0D395061B75ACCE0007FC40 /* fc-customer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fc-customer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D3950A1B75ACCE0007FC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,14 +117,33 @@
 			name = extension;
 			sourceTree = "<group>";
 		};
+		E06330FF1B8726A300F1C211 /* customer */ = {
+			isa = PBXGroup;
+			children = (
+				E07132431B7992D4009FD920 /* AddOrEditCustomerController.swift */,
+				E07583CD1B832C0A00492E51 /* ListCustomerController.swift */,
+			);
+			name = customer;
+			sourceTree = "<group>";
+		};
+		E06331001B8726D300F1C211 /* purpose */ = {
+			isa = PBXGroup;
+			children = (
+				E06331011B87275C00F1C211 /* AddOrEditPurposeController.swift */,
+				E06330FB1B86D27500F1C211 /* PurposeController.swift */,
+			);
+			name = purpose;
+			sourceTree = "<group>";
+		};
 		E07132371B787F38009FD920 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E071323D1B788BBD009FD920 /* LoginController.swift */,
 				E071323F1B7890C5009FD920 /* MenuController.swift */,
 				E07132411B78A230009FD920 /* NaviController.swift */,
-				E07132431B7992D4009FD920 /* AddCustomerController.swift */,
-				E07583CD1B832C0A00492E51 /* ListCustomerController.swift */,
+				E06330FF1B8726A300F1C211 /* customer */,
+				E06331001B8726D300F1C211 /* purpose */,
+				E06330FD1B86D6B500F1C211 /* PurposeroomController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -130,6 +157,7 @@
 				E02DFBB41B7DB93F0028EDCE /* UIHelper.swift */,
 				E02DFBB61B7DDA470028EDCE /* SelectOption.swift */,
 				E016E8151B81D5C4000A1E8D /* FormUtil.swift */,
+				E06330F91B85677100F1C211 /* Constant.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -357,10 +385,14 @@
 			files = (
 				E02DFBB71B7DDA470028EDCE /* SelectOption.swift in Sources */,
 				E02DFBB11B7C7CBD0028EDCE /* Counselor.swift in Sources */,
+				E06330FA1B85677100F1C211 /* Constant.swift in Sources */,
 				E07583CE1B832C0A00492E51 /* ListCustomerController.swift in Sources */,
+				E06331021B87275C00F1C211 /* AddOrEditPurposeController.swift in Sources */,
+				E06330FC1B86D27500F1C211 /* PurposeController.swift in Sources */,
 				E07132401B7890C5009FD920 /* MenuController.swift in Sources */,
-				E07132441B7992D4009FD920 /* AddCustomerController.swift in Sources */,
+				E07132441B7992D4009FD920 /* AddOrEditCustomerController.swift in Sources */,
 				E02DFBB51B7DB93F0028EDCE /* UIHelper.swift in Sources */,
+				E06330FE1B86D6B500F1C211 /* PurposeroomController.swift in Sources */,
 				E071323A1B7880A7009FD920 /* Defaults.swift in Sources */,
 				E02DFBAD1B7C6E6D0028EDCE /* Router.swift in Sources */,
 				E06330F81B84703D00F1C211 /* StringExtension.swift in Sources */,
