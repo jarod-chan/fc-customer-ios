@@ -61,10 +61,10 @@ class AddOrEditPurposeController: XLFormViewController {
         var section : XLFormSectionDescriptor
         var row : XLFormRowDescriptor
         
-        form = XLFormDescriptor(title: "")
+        form = XLFormDescriptor()
         form.assignFirstResponderOnShow = false
         
-        section = XLFormSectionDescriptor.formSectionWithTitle("意向信息")
+        section = XLFormSectionDescriptor.formSection()
         form.addFormSection(section)
         
         
@@ -254,7 +254,19 @@ class AddOrEditPurposeController: XLFormViewController {
         
         util.setValue(Tag.kpsj.rawValue,translate:stringSetVal)
         
-        util.setValue(Tag.xqf.rawValue,translate:stringSelect)
+        let noDefaultSelect:(String,XLFormRowDescriptor)->AnyObject?={
+            tag,row in
+            if let selectOptions=row.selectorOptions as? [SelectOption]{
+                for option in selectOptions{
+                    if option.value as! String == self.purpose[tag].stringValue{
+                        return option;
+                    }
+                }
+            }
+            return nil
+        }
+        
+        util.setValue(Tag.xqf.rawValue,translate:noDefaultSelect)
         
     }
     
