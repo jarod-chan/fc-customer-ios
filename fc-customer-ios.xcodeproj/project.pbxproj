@@ -28,6 +28,8 @@
 		E0B5E9521B8C110A00B8CB8E /* InrecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9511B8C110A00B8CB8E /* InrecordController.swift */; };
 		E0B5E9541B8C4DE200B8CB8E /* AddOrEditInrecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9531B8C4DE200B8CB8E /* AddOrEditInrecordController.swift */; };
 		E0B5E9561B8C625000B8CB8E /* XLFormCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9551B8C625000B8CB8E /* XLFormCustomCell.swift */; };
+		E0B5E9581B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9571B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift */; };
+		E0B5E95A1B900A3700B8CB8E /* RoomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9591B900A3600B8CB8E /* RoomUtil.swift */; };
 		E0D3950C1B75ACCE0007FC40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D3950B1B75ACCE0007FC40 /* AppDelegate.swift */; };
 		E0D395111B75ACCE0007FC40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D3950F1B75ACCE0007FC40 /* Main.storyboard */; };
 		E0D395131B75ACCE0007FC40 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D395121B75ACCE0007FC40 /* Images.xcassets */; };
@@ -68,6 +70,8 @@
 		E0B5E9511B8C110A00B8CB8E /* InrecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InrecordController.swift; sourceTree = "<group>"; };
 		E0B5E9531B8C4DE200B8CB8E /* AddOrEditInrecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditInrecordController.swift; sourceTree = "<group>"; };
 		E0B5E9551B8C625000B8CB8E /* XLFormCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLFormCustomCell.swift; sourceTree = "<group>"; };
+		E0B5E9571B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditPurposeroomController.swift; sourceTree = "<group>"; };
+		E0B5E9591B900A3600B8CB8E /* RoomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUtil.swift; sourceTree = "<group>"; };
 		E0D395061B75ACCE0007FC40 /* fc-customer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fc-customer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D3950A1B75ACCE0007FC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0D3950B1B75ACCE0007FC40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				E02DFBB61B7DDA470028EDCE /* SelectOption.swift */,
 				E016E8151B81D5C4000A1E8D /* FormUtil.swift */,
 				E06330F91B85677100F1C211 /* Constant.swift */,
+				E0B5E9591B900A3600B8CB8E /* RoomUtil.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 		E0B5E94E1B8C0EF300B8CB8E /* purposeroom */ = {
 			isa = PBXGroup;
 			children = (
+				E0B5E9571B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift */,
 				E06330FD1B86D6B500F1C211 /* PurposeroomController.swift */,
 			);
 			name = purposeroom;
@@ -426,6 +432,7 @@
 				E07132441B7992D4009FD920 /* AddOrEditCustomerController.swift in Sources */,
 				E02DFBB51B7DB93F0028EDCE /* UIHelper.swift in Sources */,
 				E06330FE1B86D6B500F1C211 /* PurposeroomController.swift in Sources */,
+				E0B5E9581B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift in Sources */,
 				E071323A1B7880A7009FD920 /* Defaults.swift in Sources */,
 				E02DFBAD1B7C6E6D0028EDCE /* Router.swift in Sources */,
 				E06330F81B84703D00F1C211 /* StringExtension.swift in Sources */,
@@ -433,6 +440,7 @@
 				E0B5E9541B8C4DE200B8CB8E /* AddOrEditInrecordController.swift in Sources */,
 				E071323E1B788BBD009FD920 /* LoginController.swift in Sources */,
 				E0B5E9561B8C625000B8CB8E /* XLFormCustomCell.swift in Sources */,
+				E0B5E95A1B900A3700B8CB8E /* RoomUtil.swift in Sources */,
 				E02DFBAF1B7C797B0028EDCE /* Keychain.swift in Sources */,
 				E07132421B78A230009FD920 /* NaviController.swift in Sources */,
 				E0D3950C1B75ACCE0007FC40 /* AppDelegate.swift in Sources */,

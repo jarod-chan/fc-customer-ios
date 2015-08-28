@@ -78,6 +78,23 @@ class UIHelper {
         
     }
     
+    func netLoad(module:String,parameters:[String: AnyObject]? = nil,dealResult:(JSON)->Void){
+        
+        Alamofire.request(.GET,Router(module),parameters:parameters)
+            .responseJSON { _, _, ret,error in
+                
+                if(error != nil){
+                    self.isLoadError=true
+                }else{
+                    var json = JSON(ret!)
+                    dealResult(json)
+                }
+                self.doFinishCall()
+                
+        }
+        
+    }
+    
     private func doFinishCall(){
         self.loadNum--
         if(self.loadNum==0){

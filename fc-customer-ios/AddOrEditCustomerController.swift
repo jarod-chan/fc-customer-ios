@@ -355,6 +355,10 @@ class AddOrEditCustomerController : XLFormViewController {
             if let vc=segue.destinationViewController as? PurposeController{
                 vc.customerId=self.customer["id"].intValue
             }
+        case "purposeroomController":
+            if let vc=segue.destinationViewController as? PurposeroomController{
+                vc.customerId=self.customer["id"].intValue
+            }
         case "inrecordController":
             if let vc=segue.destinationViewController as? InrecordController{
                 vc.customerId=self.customer["id"].intValue

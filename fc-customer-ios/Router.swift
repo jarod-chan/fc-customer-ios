@@ -10,6 +10,8 @@ import Alamofire
 class Router: URLStringConvertible {
     static let baseURLString = "http://app.fyg.cn:9997/fc-customer/public/service/"
     
+    static let homeURLString = "http://app.fyg.cn:9997/fc-customer/public/"
+    
     let module:String!
     
     init(_ module:String){

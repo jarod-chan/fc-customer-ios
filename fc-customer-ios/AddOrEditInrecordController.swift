@@ -161,7 +161,6 @@ class AddOrEditInrecordController: XLFormViewController {
     }
     
     func initData(){
-                println(self.inrecord)
         
         let util=FormUtil(formView:self)
         
