@@ -126,7 +126,7 @@ class AddOrEditCustomerController : XLFormViewController {
         section.addFormRow(row)
 
         row = XLFormRowDescriptor(tag:nil, rowType: XLFormRowDescriptorTypeButton, title: "成交记录")
-        row.action.formSegueIdenfifier = "NativeEventNavigationViewControllerSegue"
+        row.action.formSegueIdenfifier = "dealrecordController"
         section.addFormRow(row)
         
         self.form = form
@@ -361,6 +361,10 @@ class AddOrEditCustomerController : XLFormViewController {
             }
         case "inrecordController":
             if let vc=segue.destinationViewController as? InrecordController{
+                vc.customerId=self.customer["id"].intValue
+            }
+        case "dealrecordController":
+            if let vc=segue.destinationViewController as? DealrecordController{
                 vc.customerId=self.customer["id"].intValue
             }
         default:

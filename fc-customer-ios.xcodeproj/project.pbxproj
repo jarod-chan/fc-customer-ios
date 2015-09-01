@@ -30,6 +30,10 @@
 		E0B5E9561B8C625000B8CB8E /* XLFormCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9551B8C625000B8CB8E /* XLFormCustomCell.swift */; };
 		E0B5E9581B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9571B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift */; };
 		E0B5E95A1B900A3700B8CB8E /* RoomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9591B900A3600B8CB8E /* RoomUtil.swift */; };
+		E0B5E95E1B9060F300B8CB8E /* DealrecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E95D1B9060F300B8CB8E /* DealrecordController.swift */; };
+		E0B5E9601B91452300B8CB8E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E95F1B91452300B8CB8E /* Service.swift */; };
+		E0B5E9621B9156ED00B8CB8E /* AddDealrecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5E9611B9156ED00B8CB8E /* AddDealrecordController.swift */; };
+		E0BF5D321B93EA030080BE94 /* ViewDealrecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF5D311B93EA030080BE94 /* ViewDealrecordController.swift */; };
 		E0D3950C1B75ACCE0007FC40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D3950B1B75ACCE0007FC40 /* AppDelegate.swift */; };
 		E0D395111B75ACCE0007FC40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D3950F1B75ACCE0007FC40 /* Main.storyboard */; };
 		E0D395131B75ACCE0007FC40 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D395121B75ACCE0007FC40 /* Images.xcassets */; };
@@ -72,6 +76,10 @@
 		E0B5E9551B8C625000B8CB8E /* XLFormCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLFormCustomCell.swift; sourceTree = "<group>"; };
 		E0B5E9571B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditPurposeroomController.swift; sourceTree = "<group>"; };
 		E0B5E9591B900A3600B8CB8E /* RoomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUtil.swift; sourceTree = "<group>"; };
+		E0B5E95D1B9060F300B8CB8E /* DealrecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealrecordController.swift; sourceTree = "<group>"; };
+		E0B5E95F1B91452300B8CB8E /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		E0B5E9611B9156ED00B8CB8E /* AddDealrecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDealrecordController.swift; sourceTree = "<group>"; };
+		E0BF5D311B93EA030080BE94 /* ViewDealrecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDealrecordController.swift; sourceTree = "<group>"; };
 		E0D395061B75ACCE0007FC40 /* fc-customer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fc-customer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D3950A1B75ACCE0007FC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0D3950B1B75ACCE0007FC40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 		E07132381B788051009FD920 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E0B5E95F1B91452300B8CB8E /* Service.swift */,
 				E02DFBAE1B7C797B0028EDCE /* Keychain.swift */,
 				E07132391B7880A7009FD920 /* Defaults.swift */,
 				E02DFBAC1B7C6E6D0028EDCE /* Router.swift */,
@@ -197,6 +206,9 @@
 		E0B5E9501B8C0F4000B8CB8E /* dealrecord */ = {
 			isa = PBXGroup;
 			children = (
+				E0B5E9611B9156ED00B8CB8E /* AddDealrecordController.swift */,
+				E0BF5D311B93EA030080BE94 /* ViewDealrecordController.swift */,
+				E0B5E95D1B9060F300B8CB8E /* DealrecordController.swift */,
 			);
 			name = dealrecord;
 			sourceTree = "<group>";
@@ -424,8 +436,10 @@
 			files = (
 				E02DFBB71B7DDA470028EDCE /* SelectOption.swift in Sources */,
 				E02DFBB11B7C7CBD0028EDCE /* Counselor.swift in Sources */,
+				E0B5E9601B91452300B8CB8E /* Service.swift in Sources */,
 				E06330FA1B85677100F1C211 /* Constant.swift in Sources */,
 				E07583CE1B832C0A00492E51 /* ListCustomerController.swift in Sources */,
+				E0BF5D321B93EA030080BE94 /* ViewDealrecordController.swift in Sources */,
 				E06331021B87275C00F1C211 /* AddOrEditPurposeController.swift in Sources */,
 				E06330FC1B86D27500F1C211 /* PurposeController.swift in Sources */,
 				E07132401B7890C5009FD920 /* MenuController.swift in Sources */,
@@ -435,7 +449,9 @@
 				E0B5E9581B8E9D3D00B8CB8E /* AddOrEditPurposeroomController.swift in Sources */,
 				E071323A1B7880A7009FD920 /* Defaults.swift in Sources */,
 				E02DFBAD1B7C6E6D0028EDCE /* Router.swift in Sources */,
+				E0B5E9621B9156ED00B8CB8E /* AddDealrecordController.swift in Sources */,
 				E06330F81B84703D00F1C211 /* StringExtension.swift in Sources */,
+				E0B5E95E1B9060F300B8CB8E /* DealrecordController.swift in Sources */,
 				E016E8161B81D5C4000A1E8D /* FormUtil.swift in Sources */,
 				E0B5E9541B8C4DE200B8CB8E /* AddOrEditInrecordController.swift in Sources */,
 				E071323E1B788BBD009FD920 /* LoginController.swift in Sources */,
